@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản lí công việc hàng tuần"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Công việc: "
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/edtWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nội dung:  "
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/edtContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/width_element"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ngày HT: "
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtResultDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnDate"
+            android:layout_width="@dimen/width_element"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Date"
+            android:textAllCaps="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/width_element"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Giờ HT: "
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtResultTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnTime"
+            android:layout_width="@dimen/width_element"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Time" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAddWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Thêm CV"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh sách công việc:"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+
+    <ListView
+        android:id="@+id/lvListWork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
