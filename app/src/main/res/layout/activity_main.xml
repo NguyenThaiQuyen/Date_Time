@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Công việc: "
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/black" />
 
         <EditText
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nội dung:  "
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/black" />
 
         <EditText
@@ -71,13 +71,13 @@
             android:layout_gravity="center"
             android:text="Ngày HT: "
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtResultDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:textColor="@color/black" />
@@ -104,13 +104,13 @@
             android:layout_gravity="center"
             android:text="Giờ HT: "
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtResultTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:textColor="@color/black" />

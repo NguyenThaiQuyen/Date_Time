@@ -84,23 +84,28 @@ public class MainActivity extends Activity {
         strTime = dft.format(cal.getTime());
         // hiển thị lên textview
         txtResultTime.setText(strTime);
+        // lấy giờ theo 24h để lập trình theo tag
+        dft=new SimpleDateFormat("HH:mm",Locale.getDefault());
+        txtResultTime.setTag(dft.format(cal.getTime()));
 
         edtWork.requestFocus();
-        // gán cal.getTime() cho ngày giờ dealine
 
+        // gán cal.getTime() cho ngày giờ dealine
         mDate = cal.getTime();
         mHour = cal.getTime();
     }
 
+    // hàm gán các sự kiện controls trong phương thức controls()
     private void addEvents() {
-        btnDate.setOnClickListener(new MyButtonEvent());
-        btnTime.setOnClickListener(new MyButtonEvent());
-        btnAddWork.setOnClickListener(new MyButtonEvent());
-        lvListWork.setOnItemClickListener(new MyListViewEvent());
-        lvListWork.setOnItemLongClickListener(new MyListViewEvent());
+        btnDate.setOnClickListener(new ButtonEvent());
+        btnTime.setOnClickListener(new ButtonEvent());
+        btnAddWork.setOnClickListener(new ButtonEvent());
+        lvListWork.setOnItemClickListener(new ListViewEvent());
+        lvListWork.setOnItemLongClickListener(new ListViewEvent());
     }
 
-    private class MyButtonEvent implements OnClickListener {
+    // class sự kiện các nút Button
+    private class ButtonEvent implements OnClickListener {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -111,13 +116,14 @@ public class MainActivity extends Activity {
                     showTimePickerDialog();
                     break;
                 case R.id.btnAddWork:
-                    processAddJob();
+                    processAddWork();
                     break;
             }
         }
     }
 
-    private void processAddJob() {
+    // hàm đưa thêm công việc vào listView
+    private void  processAddWork() {
         String nameWork = edtWork.getText() + "";
         String contentWork = edtContent.getText() + "";
         WorkInWeek job = new WorkInWeek(nameWork, contentWork, mDate, mHour);
@@ -129,35 +135,37 @@ public class MainActivity extends Activity {
         edtWork.requestFocus();
     }
 
-
+    // hàm hiển thi TimPickerDialog
     public void showTimePickerDialog() {
         OnTimeSetListener callback=new OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                //Xử lý lưu giờ và AM,PM
+                //Xử lý lưu giờ 12h và AM,PM
                 String s=hourOfDay +":"+minute;
+                // nếu  giờ lớn hơn 12h chuyển về 12 bằng cách trừ cho 12
                 int hourTam=hourOfDay;
                 if(hourTam>12)  hourTam=hourTam-12;
                 txtResultTime.setText(hourTam +":"+minute +(hourOfDay>12?" PM":" AM"));
                 //lưu giờ thực vào tag
                 txtResultTime.setTag(s);
-                //lưu vết lại giờ vào hourFinish
+                //lưu vết lại giờ vào mHour
                 cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 cal.set(Calendar.MINUTE, minute);
                 mHour=cal.getTime();
             }
         };
-        //các lệnh dưới này xử lý ngày giờ trong TimePickerDialog
+        // xử lý ngày giờ trong TimePickerDialog
         //sẽ giống với trên TextView khi mở nó lên
         String s=txtResultTime.getTag()+"";
+        // chuyển chuổi thành các phần tử mảng , cắt chuỗi khi gặp dấu : rồi chuyển thành kiểu int
         String strArr[]=s.split(":");
         int gio=Integer.parseInt(strArr[0]);
         int phut=Integer.parseInt(strArr[1]);
-        TimePickerDialog time=new TimePickerDialog(MainActivity.this, callback, gio, phut, true);
+        TimePickerDialog time=new TimePickerDialog(MainActivity.this, callback, gio, phut,true);
         time.setTitle("Chọn giờ hoàn thành");
         time.show();
     }
 
-
+    // hàm hiển thi DatePickerDialog
     public void showDatePickerDialog() {
         OnDateSetListener callback = new OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -180,8 +188,10 @@ public class MainActivity extends Activity {
         pic.show();
     }
 
-    private class MyListViewEvent implements OnItemClickListener, OnItemLongClickListener {
+    // class sự kiện của ListView
+    private class ListViewEvent implements OnItemClickListener, OnItemLongClickListener {
 
+        // khai báo lại phương thức nhấp lâu vào 1 mục ở listview
         @Override
         public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
@@ -191,6 +201,7 @@ public class MainActivity extends Activity {
             return false;
         }
 
+        // khai báo lại phương thức nhấp vào 1 mục ở listview, hiển thị nội dung
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                 long arg3) {

@@ -70,6 +70,6 @@ public class WorkInWeek {
 
     @Override
     public String toString() {
-        return this.nameWork + " " + getDateFormat(this.dealineDate) + " - " + getHourFormat(this.dealineHour);
+        return this.nameWork + "    " + getDateFormat(this.dealineDate) + " - " + getHourFormat(this.dealineHour);
     }
 }
